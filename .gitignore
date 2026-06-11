@@ -1,0 +1,10 @@
+# Ignore sensitive API credential files
+.env
+
+# Ignore local authentication token caches
+.cache
+.spotify_caches
+
+# Ignore raw layout debug dumps if you still have them
+raw_spotify_payload.json
+spotify_raw_debug.json

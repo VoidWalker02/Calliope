@@ -6,18 +6,24 @@ It works by looking at the songs in your Spotify playlist, finding the matching 
 
 ##  Current Status: Very Early
 
-Calliope is fully working but is still in its early stages, I intend to add a few extra features in the future. Currently, you can download the full playlist and, when digging around the file, you can change the number of maximum concurrent downloads. 
+Calliope is fully working but is still in its early stages, I intend to add a few extra features in the future. Currently, our set of features is: 
+
+* Download spotify playlists locally with their precise metadata, including author, album, album cover and lyrics. 
+* Sync playlist with Spotify bi-directionally, pruning any songs you removed, skipping existing songs and adding new ones. 
+* Allowing the user to choose the amount of concurrent downloads. 
 
 ##  How It Works
 
-Calliope connects three different pieces behind the scenes:
+Calliope connects a few different pieces behind the scenes:
 
-1. **The Spotify Connection**: It securely logs into Spotify to read the names of the songs in your playlist.
-    
+1. **The Spotify Connection**: It logs into Spotify to read the names of the songs in your playlist.
+
 2. **The Search Engine**: It takes the song metadata and grabs the closest match off Youtube. 
-    
-3. **The Downloader**: It grabs the audio from YouTube, converts it into the highest quality `.mp3` file it can, and saves it in a folder named after your playlist.
-    
+
+3. **The Downloader**: It grabs the audio from YouTube, converts it into the highest quality `.mp3` file it can, and saves it in a folder named after your playlist. 
+
+4. **Metadata Tagging**: Injects the files with the correct song metadata, including high resolution artwork of the albums and song lyrics.
+
 
 ##  Getting Started
 
@@ -88,10 +94,9 @@ Downloading too fast can make YouTube think you are a malicious robot and temp-b
     
 - **Human Jitter**: It waits a random amount of seconds ($1.5$ to $3.0$ seconds) between song downloads to look like a human clicking through a playlist rather than a fast machine.
     
-
+- **Universal Metadata Containers**: Embedded text tags are written using strict ID3v2.4 layout specifications. Lyrics are stored directly within the file container using standard unsynchronized layout primitives, ensuring lyrics work in most modern desktop media clients and private streaming environments.
 ##  Future Updates 
 
-- [ ] Make Calliope embed the proper Album Artwork automatically.
     
 - [ ] Add a feature that double-checks the video length to make sure it doesn't accidentally download a 10-hour loop instead of a 3-minute song (something we're entirely relying on yt-dlp to do for us).
     
